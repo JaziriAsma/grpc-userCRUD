@@ -1,6 +1,5 @@
 const grpc = require('grpc')
 const usersProto = grpc.load('users.proto')
-//const uuidv1 = require('uuid/v1')
 
 const server = new grpc.Server()
 const users = [
@@ -25,7 +24,6 @@ server.addService(usersProto.UserService.service, {
     },
     insert: (call, callback) => {
         let user = call.request
-        //note.name = uuidv1()
         users.push(user)
         callback(null, user)
     },
